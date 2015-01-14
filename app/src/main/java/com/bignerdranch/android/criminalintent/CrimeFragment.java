@@ -33,7 +33,7 @@ public class CrimeFragment extends Fragment {
     public static final String EXTRA_CRIME_ID = "com.bignerdranch.android.criminalintent.crime_id";
 
     private static final String FORMAT_DATE = "EEEE MMM dd, yyyy";
-    private static final String FORMAT_TIME = "K:m a";
+    private static final String FORMAT_TIME = "K:mm a";
     private static final String DIALOG_DATE = "date";
     private static final String DIALOG_TIME = "time";
     private static final int REQUEST_DATE = 0;
@@ -96,7 +96,7 @@ public class CrimeFragment extends Fragment {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 Calendar c = Calendar.getInstance();
                 c.setTime(mCrime.getDate());
-                TimePickerFragment dialog = TimePickerFragment.newInstance(c.get(Calendar.HOUR), c.get(Calendar.MINUTE));
+                TimePickerFragment dialog = TimePickerFragment.newInstance(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
                 dialog.setTargetFragment(CrimeFragment.this, REQUEST_TIME);
                 dialog.show(fm, DIALOG_TIME);
             }
@@ -125,10 +125,10 @@ public class CrimeFragment extends Fragment {
         else if (requestCode == REQUEST_TIME) {
             final Calendar c = Calendar.getInstance();
             c.setTime(mCrime.getDate());
-            int hours = data.getIntExtra(TimePickerFragment.EXTRA_HOUR, c.HOUR);
+            int hours = data.getIntExtra(TimePickerFragment.EXTRA_HOUR, c.HOUR_OF_DAY);
             int minutes = data.getIntExtra(TimePickerFragment.EXTRA_MINUTE, c.MINUTE);
 
-            c.set(Calendar.HOUR, hours);
+            c.set(Calendar.HOUR_OF_DAY, hours);
             c.set(Calendar.MINUTE, minutes);
 
             mCrime.setDate(c.getTime());

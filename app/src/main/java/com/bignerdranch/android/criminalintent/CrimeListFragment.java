@@ -20,7 +20,7 @@ public class CrimeListFragment extends ListFragment {
     private ArrayList<Crime> mCrimes;
 
     private static final String TAG = "CrimeListActivity";
-    private static final String FORMAT_DATE = "EEEE MMM dd, yyyy @ K:m a";
+    private static final String FORMAT_DATE = "EEEE MMM dd, yyyy @ K:mm a";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

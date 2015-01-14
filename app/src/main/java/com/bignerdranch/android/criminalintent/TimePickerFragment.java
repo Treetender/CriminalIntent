@@ -22,6 +22,7 @@ public class TimePickerFragment extends DialogFragment {
     public static final String EXTRA_MINUTE = "com.bignerdranch.android.criminalintent.minute";
 
     private int mHours, mMinutes;
+    private TimePicker mTp;
 
     public static TimePickerFragment newInstance(int hours, int minutes)
     {
@@ -38,15 +39,15 @@ public class TimePickerFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Calendar c = Calendar.getInstance();
-        mHours = getArguments().getInt(EXTRA_HOUR, c.get(Calendar.HOUR));
+        mHours = getArguments().getInt(EXTRA_HOUR, c.get(Calendar.HOUR_OF_DAY));
         mMinutes = getArguments().getInt(EXTRA_MINUTE, c.get(Calendar.MINUTE));
 
         View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_time, null);
-        TimePicker tp = (TimePicker)v.findViewById(R.id.dialog_time_timePicker);
+        mTp = (TimePicker)v.findViewById(R.id.dialog_time_timePicker);
 
-        tp.setCurrentHour(mHours);
-        tp.setCurrentMinute(mMinutes);
-        tp.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+        mTp.setCurrentHour(mHours);
+        mTp.setCurrentMinute(mMinutes);
+        mTp.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
                 mHours = hourOfDay;
@@ -63,6 +64,12 @@ public class TimePickerFragment extends DialogFragment {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        mHours = mTp.getCurrentHour();
+                        mMinutes = mTp.getCurrentMinute();
+                                    
+                        getArguments().putInt(EXTRA_HOUR, mHours);
+                        getArguments().putInt(EXTRA_MINUTE, mMinutes);
+                        
                         sendResult(Activity.RESULT_OK);
                     }
                 })
