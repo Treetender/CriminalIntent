@@ -45,6 +45,8 @@ public class TimePickerFragment extends DialogFragment {
         View v = getActivity().getLayoutInflater().inflate(R.layout.dialog_time, null);
         mTp = (TimePicker)v.findViewById(R.id.dialog_time_timePicker);
 
+        //Branch Test
+
         mTp.setCurrentHour(mHours);
         mTp.setCurrentMinute(mMinutes);
         mTp.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
