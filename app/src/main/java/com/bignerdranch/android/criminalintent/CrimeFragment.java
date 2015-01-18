@@ -17,7 +17,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -77,7 +76,6 @@ public class CrimeFragment extends Fragment {
         });
 
         mDateButton = (Button)v.findViewById(R.id.crime_date);
-        updateDate();
         mDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,18 +87,16 @@ public class CrimeFragment extends Fragment {
         });
 
         mTimeButton = (Button)v.findViewById(R.id.crime_time);
-        updateTime();
         mTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
-                Calendar c = Calendar.getInstance();
-                c.setTime(mCrime.getDate());
-                TimePickerFragment dialog = TimePickerFragment.newInstance(c.get(Calendar.HOUR_OF_DAY), c.get(Calendar.MINUTE));
+                TimePickerFragment dialog = TimePickerFragment.newInstance(mCrime.getDate());
                 dialog.setTargetFragment(CrimeFragment.this, REQUEST_TIME);
                 dialog.show(fm, DIALOG_TIME);
             }
         });
+        updateDate();
 
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
@@ -123,24 +119,14 @@ public class CrimeFragment extends Fragment {
             updateDate();
         }
         else if (requestCode == REQUEST_TIME) {
-            final Calendar c = Calendar.getInstance();
-            c.setTime(mCrime.getDate());
-            int hours = data.getIntExtra(TimePickerFragment.EXTRA_HOUR, c.HOUR_OF_DAY);
-            int minutes = data.getIntExtra(TimePickerFragment.EXTRA_MINUTE, c.MINUTE);
-
-            c.set(Calendar.HOUR_OF_DAY, hours);
-            c.set(Calendar.MINUTE, minutes);
-
-            mCrime.setDate(c.getTime());
-            updateTime();
+            Date date = (Date)data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
+            mCrime.setDate(date);
+            updateDate();
         }
     }
 
     private void updateDate() {
         mDateButton.setText(DateFormat.format(FORMAT_DATE, mCrime.getDate()));
-    }
-
-    private void updateTime() {
         mTimeButton.setText(DateFormat.format(FORMAT_TIME, mCrime.getDate()));
     }
 }
