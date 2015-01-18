@@ -26,22 +26,12 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp">
 
-        <LinearLayout
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/crime_date"
-                android:layout_weight="1"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/crime_time"
-                android:layout_weight="1"/>
-         </LinearLayout>
+            android:id="@+id/crime_date"
+            android:layout_weight="1"/>
+
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
