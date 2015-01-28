@@ -6,28 +6,28 @@
         jumboMode="false"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-f147252c5f8b49ab54cabd4974d6d6b3da8989a6.jar" />
+        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/release/support-annotations-21.0.3-f147252c5f8b49ab54cabd4974d6d6b3da8989a6.jar" />
     </item>
     <item
         jar="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-b0afb5fbcc7a2e56f5c6a88f671e087c67b231bf.jar" />
+        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/release/internal_impl-21.0.3-b0afb5fbcc7a2e56f5c6a88f671e087c67b231bf.jar" />
     </item>
     <item
         jar="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/debug/classes-b49589d822bbdf4c9c39ca5072e8740ae087925c.jar" />
+        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/release/classes-b49589d822bbdf4c9c39ca5072e8740ae087925c.jar" />
     </item>
     <item
         jar="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/debug/classes-8e82c6c11f9581a55c6e310c2de85101685d66ed.jar" />
+        <dex dex="/home/treetender/AndroidStudioProjects/CriminalIntent/app/build/intermediates/pre-dexed/release/classes-8e82c6c11f9581a55c6e310c2de85101685d66ed.jar" />
     </item>
 
 </items>
