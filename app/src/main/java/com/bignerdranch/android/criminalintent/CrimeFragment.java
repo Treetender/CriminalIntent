@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class CrimeFragment extends Fragment {
     private ImageButton mCameraButton;
     private CheckBox mSolvedCheckBox;
 
+    private static final String TAG = "CrimeFragment";
     public static final String EXTRA_CRIME_ID = "com.bignerdranch.android.criminalintent.crime_id";
 
     private static final String FORMAT_DATE = "EEEE MMM dd, yyyy";
@@ -46,6 +48,7 @@ public class CrimeFragment extends Fragment {
     private static final String DIALOG_TIME = "time";
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_TIME = 1;
+    private static final int REQUEST_PHOTO = 2;
 
     public static CrimeFragment newInstance(UUID crimeID) {
         Bundle args = new Bundle();
@@ -134,7 +137,7 @@ public class CrimeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), CrimeCameraActivity.class);
-                startActivity(i);
+                startActivityForResult(i, REQUEST_PHOTO);
             }
         });
 
@@ -185,7 +188,13 @@ public class CrimeFragment extends Fragment {
 
             mCrime.setDate(c.getTime());
             updateTime();
+        } else if (requestCode == REQUEST_PHOTO) {
+            //Create a new photo and attach it
+            String filename = data.getStringExtra(CrimeCameraFragment.EXTRA_PHOTO_FILENAME);
+            if (filename != null)
+                Log.i(TAG, "filename: " + filename);
         }
+
     }
 
     private void updateDate() {
