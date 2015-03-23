@@ -210,6 +210,12 @@ public class CrimeFragment extends Fragment {
         showPhoto();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        PictureUtils.cleanImageView(mPhotoView);
+    }
+
     private void updateDate() {
         mDateButton.setText(DateFormat.format(FORMAT_DATE, mCrime.getDate()));
     }
