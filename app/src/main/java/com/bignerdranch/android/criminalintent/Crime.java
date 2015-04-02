@@ -16,9 +16,10 @@ public class Crime {
     private static final String JSON_SOLVED = "solved";
     private static final String JSON_DATE = "date";
     private static final String JSON_PHOTO = "photo";
+    private static final String JSON_SUSPECT = "suspect";
 
     private UUID mId;
-    private String mTitle;
+    private String mTitle, mSuspect;
     private Date mDate;
     private boolean mSolved;
     private Photo mPhoto;
@@ -37,43 +38,42 @@ public class Crime {
         mDate = new Date(json.getLong(JSON_DATE));
         if(json.has(JSON_PHOTO))
             mPhoto = new Photo(json.getJSONObject(JSON_PHOTO));
+        if(json.has(JSON_SUSPECT))
+            mSuspect = json.getString(JSON_SUSPECT);
     }
 
+    //Getters
     public UUID getId() {
         return mId;
     }
-
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public void setTitle(String title) {
-        mTitle = title;
-    }
-
     public Date getDate() {
         return mDate;
     }
-
-    public void setDate(Date date) {
-        mDate = date;
+    public String getTitle() {
+        return mTitle;
     }
-
     public Photo getPhoto() {
         return mPhoto;
     }
-
-    public void setPhoto(Photo p) {
-        mPhoto = p;
-    }
-
     public boolean isSolved() {
         return mSolved;
     }
+    public String getSuspect() { return mSuspect; }
 
+    //Setters
+    public void setTitle(String title) {
+        mTitle = title;
+    }
+    public void setDate(Date date) {
+        mDate = date;
+    }
+    public void setPhoto(Photo p) {
+        mPhoto = p;
+    }
     public void setSolved(boolean solved) {
         mSolved = solved;
     }
+    public void setSuspect(String suspect) { mSuspect = suspect; }
 
     @Override
     public String toString() {
