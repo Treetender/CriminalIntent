@@ -164,6 +164,19 @@ public class CrimeFragment extends Fragment {
                          || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
                          && android.hardware.Camera.getNumberOfCameras() > 0);
 
+        Button reportButton = (Button)v.findViewById(R.id.crime_reportButton);
+        reportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_TEXT, getCrimeReport());
+                i.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.crime_report_subject));
+                i = Intent.createChooser(i, getString(R.string.send_report));
+                startActivity(i);
+            }
+        });
+
         return v;
     }
 
