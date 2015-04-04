@@ -13,7 +13,13 @@ import java.util.UUID;
 /**
  * Created by treetender on 1/8/15.
  */
-public class CrimePagerActivity extends ActionBarActivity {
+public class CrimePagerActivity extends ActionBarActivity
+                                implements CrimeFragment.Callbacks
+{
+
+    @Override
+    public void onCrimeUpdated(Crime crime) { }
+
     private ViewPager mViewPager;
     private ArrayList<Crime> mCrimes;
 
